@@ -13,3 +13,4 @@ psycopg2-binary==2.9.9
 geopy==2.3.0
 pydantic==1.10.13
 python-jose==3.3.0
+passlib==1.7.4
