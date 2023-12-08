@@ -83,7 +83,7 @@ async def get_current_active_user(current_user: UserInDB = Depends(get_current_u
 @app.post("/token", response_model=Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
     user = authenticate_user(form_data.username, form_data.password)
-    access_token_expires = timedelta(minutes=ACCES_TOKEN_EXPIRE_DAYS)
+    access_token_expires = timedelta(days=ACCES_TOKEN_EXPIRE_DAYS)
     access_token = create_access_token(
         data={"sub": user.username}, expires_delta=access_token_expires
     )
