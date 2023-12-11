@@ -8,6 +8,13 @@ Live demo (Botinder): [here](https://botinder.onrender.com/home)
 
 This API was created specially for calculate distance and to generate latitude and longitude from city name.
 
+# frameworks and technologies:
+- <a href="https://www.sqlalchemy.org/" alt="sqlalchemy">sqlalchemy</a> (to store information in database i am using Postgresql)
+- fastapi
+- jose library (jwt)
+- Bcrypt to hash password
+
+
 ## Deployment on your local machine
 
 To use this app, follow these steps:
