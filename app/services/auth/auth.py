@@ -66,10 +66,10 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         username: str = payload.get("sub")
         if username is None:
-            raise credential_exception  # Zamiast return, używamy raise
+            raise credential_exception  
         token_data = TokenData(username=username)
     except JWTError:
-        raise credential_exception  # Tutaj również używamy raise
+        raise credential_exception  
     user = get_user(username=token_data.username)
     if user is None:
         raise credential_exception
@@ -80,20 +80,3 @@ async def get_current_active_user(current_user: UserInDB = Depends(get_current_u
         raise HTTPException(status_code=400, detail="inactive user")
     return current_user
 
-@app.post("/token", response_model=Token)
-async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
-    user = authenticate_user(form_data.username, form_data.password)
-    access_token_expires = timedelta(days=ACCES_TOKEN_EXPIRE_DAYS)
-    access_token = create_access_token(
-        data={"sub": user.username}, expires_delta=access_token_expires
-    )
-    return {"access_token": access_token, "token_type": "bearer"}
-
-
-@app.get("/users/me/", response_model=User)
-async def read_users_me(current_user: User = Depends(get_current_active_user)):
-    return current_user
-
-@app.get("/users/me/items")
-async def read_own_items(current_user: User = Depends(get_current_active_user)):
-    return [{"item_id": 1, "owner": current_user}]

@@ -1,7 +1,7 @@
 from geopy.distance import geodesic
 from geopy.geocoders import Nominatim
 
-def get_coordinates_for_city(city_name):  # Generates latitude and longtude from city name
+def get_coordinates_for_city(city_name):
     geolocator = Nominatim(user_agent="Botinder")
     location = geolocator.geocode(city_name)
 

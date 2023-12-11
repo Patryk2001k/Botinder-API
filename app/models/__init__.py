@@ -2,21 +2,18 @@ from sqlalchemy import MetaData, create_engine, text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import create_database, database_exists
-import os
+
 Base = declarative_base()
 metadata = MetaData()
-DB_URL = os.environ.get("BOTINDER_API_DATABASE_URL")
+DB_URL = ""
 engine = create_engine(DB_URL, echo=True)
 if not database_exists(engine.url):
     create_database(engine.url)
+    with engine.connect() as connection:
+        connection.execute(text('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";'))
+        connection.execute(text('CREATE EXTENSION IF NOT EXISTS "postgis";'))
     print("Utworzono bazę danych.")
-with engine.connect() as connection:
-    connection.execute(text('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";'))
-    connection.execute(text('CREATE EXTENSION IF NOT EXISTS "postgis";'))
-    
 
-
-#importowanie tabel
 from app.models.user import User
 
 Base.metadata.create_all(bind=engine)
