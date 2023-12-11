@@ -1,6 +1,6 @@
 
 # Botinder API ![](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![](https://img.shields.io/badge/Postgresql-07405E?style=for-the-badge&logo=postgresql&logoColor=white) ![](https://img.shields.io/badge/Fastapi-07405E?style=for-the-badge&logo=fastapi&logoColor=white)
-This API was create for Botinder app
+This API was built in FastAPI framework and was created for Botinder app
 
 Github: https://github.com/Patryk2001k/Botinder
 
