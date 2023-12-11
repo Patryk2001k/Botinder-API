@@ -23,6 +23,3 @@ To use this app, follow these steps:
 3. Set up your PostgreSQL database and configure the connection in `__init__.py` in models module.
 4. Run the app using `uvicorn app.main:app`.
 5. Open your browser and go to `http://localhost:5000`.
-
-## How to use
-
