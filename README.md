@@ -17,4 +17,5 @@ To use this app, follow these steps:
 4. Run the app using `uvicorn app.main:app`.
 5. Open your browser and go to `http://localhost:5000`.
 
+## How to use
 
