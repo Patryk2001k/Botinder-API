@@ -31,7 +31,6 @@ def get_password_hash(password):
 def get_user(username: str):
     user_data = get_user_by_username(username)
     if user_data:
-        print(user_data)
         return UserInDB(**user_data)
 
 def authenticate_user(username: str, password: str):

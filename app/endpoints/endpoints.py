@@ -14,7 +14,7 @@ from app.dependencies.geolocation.geolocation import get_coordinates_for_city, c
 
 
 @app.get("/get_coordinates/{city_name}")
-def get_coordinates_endpoint(
+def get_coordinates(
     city_name: str, 
     coords: tuple = Depends(get_coordinates_for_city),
     current_user: User = Depends(get_current_active_user)):
@@ -24,7 +24,7 @@ def get_coordinates_endpoint(
 
 
 @app.get("/distance/")
-def get_distance_endpoint(first_lat : float, first_lon : float, second_lat : float, second_lon : float, calculated_distance: int = Depends(calculate_distance), current_user: User = Depends(get_current_active_user)):
+def get_distance(first_lat : float, first_lon : float, second_lat : float, second_lon : float, calculated_distance: int = Depends(calculate_distance), current_user: User = Depends(get_current_active_user)):
     if(first_lat == None and first_lon == None and second_lat == None and second_lon == None):
         return {"error": "No latitude or longitude given"}
     return {"distance": calculated_distance}
