@@ -4,8 +4,6 @@ This API was built in FastAPI framework and was created for Botinder app
 
 Github: https://github.com/Patryk2001k/Botinder
 
-Live demo (Botinder): [here](https://botinder.onrender.com/home)
-
 This API was created specially for calculate distance and to generate latitude and longitude from city name.
 
 # frameworks and technologies:
